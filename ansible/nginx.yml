@@ -1,0 +1,25 @@
+---
+- name: remove default nginx config
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: add reverse proxy config
+  copy:
+    src: "{{ playbook_dir }}/files/amazing-app.conf"
+    dest: "/etc/nginx/sites-available"
+    owner: "ubuntu"
+    group: "ubuntu"
+    mode: "0644"
+
+- name: symlink reverse proxy config
+  file:
+    src: "/etc/nginx/sites-available/amazing-app.conf"
+    dest: "/etc/nginx/sites-enabled/amazing-app.conf"
+    owner: "ubuntu"
+    group: "ubuntu"
+    state: link
+
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes
+  become: true

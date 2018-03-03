@@ -1,0 +1,30 @@
+---
+- hosts: glofox
+  tasks:
+
+    - block:
+
+      - name: setting up nginx
+        include: nginx.yml
+
+      - name: Creates directory
+        file:
+          path: /var/www/app
+          state: directory
+          owner: ubuntu
+          group: ubuntu
+          mode: 0775
+
+      - name: create docker-compose conf from template
+        copy:
+          src: "{{ playbook_dir }}/files/docker-compose.yml"
+          dest: "/var/www/app"
+          owner: "ubuntu"
+          group: "ubuntu"
+          mode: "0644"
+          validate: docker-compose -f %s config --quiet
+
+      - name: run docker-compose up command
+        command: docker-compose -f /var/www/app/docker-compose.yml up -d --no-deps
+
+  become: true

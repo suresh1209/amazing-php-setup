@@ -1,0 +1,8 @@
+version: '2'
+services:
+    app:
+        image: suresh1209/amazing-php-app:1.0
+        ports:
+            - "8000:8000"
+        environment:
+            - lang=EN

@@ -36,3 +36,17 @@ Apply the changes to build the infrastructure:
 terraform apply out.tfplan
 ```
 
+
+## To deploy app to AWS
+Update the hosts file with the ec2-instance ip-address (TODO: Can be set to auto-discovery)
+Update the path of the private key
+Run the deploy script
+```
+sh deploy.sh
+```
+
+
+## To destroy the infrastructure
+```
+terraform destroy
+```
