@@ -36,7 +36,7 @@ Apply the changes to build the infrastructure:
 ```
 terraform apply out.tfplan
 ```
-
+It takes ~2min to finish the cloud-init script. Once, it is finished you should should `Hello, World!` when you hit the elb dns.
 
 ## To deploy app to AWS
 Update the hosts file with the ec2-instance ip-address (TODO: Can be set to auto-discovery)
