@@ -22,6 +22,7 @@ registers, this should respond with the default nginx web page.
 Create the ssh rsa key in the project directory with name `glofox`
 
 ```
+cd terraform
 ssh-keygen -t rsa
 ```
 
