@@ -1,5 +1,5 @@
 # Automating AWS Architecture for amazing-php-app
-
+php app: https://github.com/suresh1209/amazing-php-app
 The premise is to run stateless app servers running behind
 an ELB serving traffic with autoscaling enabled.
 
